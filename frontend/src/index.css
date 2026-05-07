@@ -1,50 +1,104 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:        #0a0a0a;
-  --bg2:       #111111;
-  --bg3:       #1a1a1a;
-  --border:    #2a2a2a;
-  --border2:   #333;
-  --text:      #e8e8e8;
-  --muted:     #666;
-  --accent:    #c8f135;
-  --accent2:   #8fb820;
-  --danger:    #ff4d4d;
-  --warn:      #ffaa33;
-  --safe:      #4dff91;
-  --font-head: 'Syne', sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  /* Core palette — iron & fire */
+  --bg:         #0d0d0d;
+  --bg2:        #141414;
+  --bg3:        #1c1c1c;
+  --bg4:        #222222;
+  --border:     #2a2a2a;
+  --border2:    #383838;
+  --text:       #f0ede8;
+  --text2:      #a09a90;
+  --muted:      #555;
+
+  /* Accent — fire orange (gym energy) */
+  --accent:     #ff6b1a;
+  --accent2:    #ff8c42;
+  --accent-glow:#ff6b1a33;
+
+  /* Status colors */
+  --danger:     #ff3333;
+  --danger-bg:  #ff333315;
+  --warn:       #ffaa33;
+  --warn-bg:    #ffaa3315;
+  --safe:       #33cc66;
+  --safe-bg:    #33cc6615;
+
+  /* Typography */
+  --font-head:  'Barlow Condensed', sans-serif;
+  --font-body:  'Barlow', sans-serif;
+  --font-mono:  'DM Mono', monospace;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.6;
-  min-height: 100vh;
+  /* Subtle iron texture via noise */
+  background-image:
+    radial-gradient(ellipse at 20% 0%, #ff6b1a08 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, #ff6b1a05 0%, transparent 50%);
 }
 
-::-webkit-scrollbar { width: 4px; }
+/* Scrollbars */
+::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; opacity: 0.4; }
 
+/* Range sliders — orange gym bar */
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
-  height: 3px;
+  height: 2px;
   background: var(--border2);
-  border-radius: 2px;
+  border-radius: 1px;
   outline: none;
   cursor: pointer;
+  transition: background 0.2s;
 }
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background: var(--accent);
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: box-shadow 0.2s;
 }
-input[type=range]:hover { background: var(--border); }
+input[type=range]:hover {
+  background: var(--border);
+}
+input[type=range]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 14px var(--accent);
+}
+
+/* Buttons base reset */
+button {
+  font-family: var(--font-head);
+  cursor: pointer;
+}
+
+/* Glow utility */
+.glow {
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Plate texture on cards — subtle horizontal lines like weight plates */
+.plate-texture {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255,107,26,0.015) 3px,
+    rgba(255,107,26,0.015) 4px
+  );
+}
