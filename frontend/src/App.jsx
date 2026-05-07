@@ -56,28 +56,18 @@ function Toggle({ value, onChange }) {
 }
 
 function Slider({ label, value, min, max, step, onChange, format }) {
-  const pct = ((value - min) / (max - min)) * 100
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 5, marginBottom: 12 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 8 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontSize: 12, color: C.text2 }}>{label}</span>
-        <span style={{ fontSize: 13, fontWeight: 600, color: C.accent, fontFamily: 'DM Mono, monospace' }}>
+        <span style={{ fontSize: 13, fontWeight: 600, color: C.accent, fontFamily: "DM Mono, monospace" }}>
           {format ? format(value) : value}
         </span>
       </div>
-      <div style={{ position: 'relative' }}>
-        <div style={{
-          position: 'absolute', top: '50%', left: 0,
-          width: `${pct}%`, height: 2, background: C.accent,
-          borderRadius: 1, transform: 'translateY(-50%)',
-          pointerEvents: 'none', zIndex: 1,
-          boxShadow: `0 0 6px ${C.accentG}`,
-        }} />
-        <input type="range" min={min} max={max} step={step}
-          value={value} onChange={e => onChange(parseFloat(e.target.value))}
-          style={{ position: 'relative', zIndex: 2, background: 'transparent', width: '100%' }}
-        />
-      </div>
+      {/* Simple clean slider — no overlay divs blocking touch */}
+      <input type="range" min={min} max={max} step={step}
+        value={value} onChange={e => onChange(parseFloat(e.target.value))}
+      />
     </div>
   )
 }
@@ -344,7 +334,7 @@ export default function App() {
         boxShadow: loading ? 'none' : `0 4px 20px ${C.accentG}`,
         transition: 'all 0.2s',
       }}>
-        {loading ? '⏳ PREDICTING...' : '🔥 PREDICT CHURN RISK'}
+        {loading ? ' PREDICTING...' : ' PREDICT CHURN RISK'}
       </button>
     </div>
   )
