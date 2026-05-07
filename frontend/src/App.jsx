@@ -492,10 +492,10 @@ export default function App() {
       background: C.bg, color: C.text,
       fontFamily: 'Barlow, sans-serif',
       minHeight: '100vh',
-      // Mobile: single column, Desktop: sidebar layout
-      display: mobile ? 'flex' : 'grid',
-      flexDirection: mobile ? 'column' : undefined,
+      // Mobile: single column scroll, Desktop: sidebar grid
+      display: mobile ? 'block' : 'grid',
       gridTemplateColumns: mobile ? undefined : '320px 1fr',
+      overflowX: 'hidden',
     }}>
 
       {/* ── HEADER (mobile only) ── */}
@@ -601,9 +601,9 @@ export default function App() {
 
       {/* ── MAIN CONTENT ── */}
       <div style={{
-        height: mobile ? undefined : '100vh',
-        overflowY: mobile ? undefined : 'auto',
-        padding: mobile ? '16px 16px 80px' : '20px 24px',
+        height: mobile ? 'auto' : '100vh',
+        overflowY: mobile ? 'visible' : 'auto',
+        padding: mobile ? '16px 16px 100px' : '20px 24px',
         display: 'flex', flexDirection: 'column', gap: 16,
         background: C.bg,
       }}>
