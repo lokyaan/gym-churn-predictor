@@ -1,0 +1,53 @@
+{
+  "best_model": "XGBoost",
+  "test_auc": 0.988,
+  "cv_results": {
+    "Logistic Regression": {
+      "mean": 0.9755,
+      "std": 0.0046
+    },
+    "Random Forest": {
+      "mean": 0.9841,
+      "std": 0.0026
+    },
+    "Gradient Boosting": {
+      "mean": 0.9879,
+      "std": 0.0023
+    },
+    "XGBoost": {
+      "mean": 0.9877,
+      "std": 0.0015
+    }
+  },
+  "top_features": {
+    "early_member": 0.3158,
+    "near_contract_end": 0.1429,
+    "freq_drop_ratio": 0.1234,
+    "Lifetime": 0.1084,
+    "Month_to_end_contract": 0.0725,
+    "Contract_period": 0.0657,
+    "Age": 0.0374,
+    "Avg_class_frequency_total": 0.0273,
+    "Avg_class_frequency_current_month": 0.0218,
+    "Group_visits": 0.0187
+  },
+  "feature_names": [
+    "gender",
+    "Near_Location",
+    "Partner",
+    "Promo_friends",
+    "Phone",
+    "Contract_period",
+    "Group_visits",
+    "Age",
+    "Avg_additional_charges_total",
+    "Month_to_end_contract",
+    "Lifetime",
+    "Avg_class_frequency_total",
+    "Avg_class_frequency_current_month",
+    "freq_drop_ratio",
+    "high_engagement",
+    "near_contract_end",
+    "early_member"
+  ]
+}
